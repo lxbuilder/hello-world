@@ -21,7 +21,6 @@ $(C_TARGETS): hello.c $(MUSL_GCC)
 	$(MUSL_GCC) $(CFLAGS) -Wl,--gc-sections -static \
 		-o '$@' \
 		-D DOCKER_IMAGE='"$(notdir $(@D))"' \
-		-D DOCKER_GREETING="\"$$(cat 'greetings/$(notdir $(@D)).txt')\"" \
 		-D DOCKER_ARCH='"$(TARGET_ARCH)"' \
 		'$<'
 	$(STRIP) --strip-all --remove-section=.comment '$@'
